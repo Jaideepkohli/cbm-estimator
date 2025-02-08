@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #ffffff; /* White background */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -11,18 +11,25 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
+    background-color: #ffffff; /* White container */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 1000px;
+    text-align: center;
+}
+
+/* Logo Styles */
+.logo img {
+    width: 150px; /* Adjust logo size as needed */
+    margin-bottom: 20px;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: #ff6f00; /* Xhipment orange */
     font-size: 28px;
     font-weight: 700;
 }
@@ -42,8 +49,8 @@ th, td {
 }
 
 th {
-    background-color: #2c3e50;
-    color: #ffffff;
+    background-color: #ff6f00; /* Xhipment orange */
+    color: #ffffff; /* White text */
     font-weight: 500;
 }
 
@@ -58,15 +65,15 @@ input, select {
 }
 
 input:focus, select:focus {
-    border-color: #3498db;
+    border-color: #ff6f00; /* Xhipment orange */
     outline: none;
 }
 
 /* Button Styles */
 button {
     padding: 10px 20px;
-    background-color: #3498db;
-    color: #ffffff;
+    background-color: #ff6f00; /* Xhipment orange */
+    color: #ffffff; /* White text */
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -77,20 +84,20 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #e65c00; /* Darker orange on hover */
 }
 
 #addRow {
-    background-color: #2ecc71;
+    background-color: #ff6f00; /* Xhipment orange */
 }
 
 #addRow:hover {
-    background-color: #27ae60;
+    background-color: #e65c00; /* Darker orange on hover */
 }
 
 /* Total CBM Display */
 #totalCBM {
     font-weight: bold;
-    color: #3498db;
+    color: #ff6f00; /* Xhipment orange */
     font-size: 20px;
 }
