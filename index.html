@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="unnamed.png" alt="Xhipment Logo">
+        </div>
+
         <h1>CBM Calculator</h1>
         <table id="inputTable">
             <thead>
@@ -38,9 +42,67 @@
             </tbody>
         </table>
         <button id="addRow">Add Another Row</button>
-        <button id="calculate">Calculate Total CBM</button>
+        <button id="calculate">Calculate Total CBM & Shipping Cost</button>
+        
         <h2>Total CBM: <span id="totalCBM">0.00</span></h2>
+        <h2>Shipping Cost: <span id="shippingCost">$0.00</span></h2>
+        
+        <!-- Breakdown Section -->
+        <h3>Shipping Cost Breakdown</h3>
+        <table id="breakdownTable">
+            <thead>
+                <tr>
+                    <th>CBM Considered</th>
+                    <th>Rate per CBM</th>
+                    <th>Total Shipping Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="breakdownCBM">-</td>
+                    <td id="breakdownRate">-</td>
+                    <td id="breakdownTotal">-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Inclusions & Exclusions -->
+        <div class="details">
+            <h3>Inclusions</h3>
+            <p>Origin Handling, Ocean Freight, Destination Delivery.</p>
+            
+            <h3>Exclusions</h3>
+            <p>Pick Up Charge, Customs Duties, Import Clearance, Export Clearance, Bond Procurement, Accessorials charged at actuals.</p>
+            
+            <h3>Conditions</h3>
+            <p>Deliveries to other FCs/AWDs available at an additional cost.</p>
+            <p>Anything less than 2 CBM will be charged as 2 CBM.</p>
+        </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('calculate').addEventListener('click', function () {
+            const totalCBM = parseFloat(document.getElementById('totalCBM').textContent);
+            let rate, consideredCBM = totalCBM < 2 ? 2 : totalCBM;
+            
+            if (consideredCBM <= 5) {
+                rate = 189;
+            } else if (consideredCBM <= 10) {
+                rate = 159;
+            } else if (consideredCBM <= 15) {
+                rate = 119;
+            } else if (consideredCBM <= 25) {
+                rate = 109;
+            } else {
+                rate = 89;
+            }
+            
+            const shippingCost = consideredCBM * rate;
+            
+            document.getElementById('breakdownCBM').textContent = consideredCBM.toFixed(2);
+            document.getElementById('breakdownRate').textContent = `$${rate}`;
+            document.getElementById('breakdownTotal').textContent = `$${shippingCost.toFixed(2)}`;
+        });
+    </script>
 </body>
 </html>
