@@ -9,10 +9,8 @@
 </head>
 <body>
     <div class="container">
-
         <div class="logo">
             <img src="unnamed.png" alt="Xhipment Logo">
-
         </div>
 
         <h1>CBM Calculator</h1>
@@ -69,7 +67,7 @@
         </table>
 
         <!-- Inclusions & Exclusions -->
-        <div class="details">
+        <div class="details" style="text-align: left;">
             <h3>Inclusions</h3>
             <p>Origin Handling, Ocean Freight, Destination Delivery.</p>
             
@@ -80,31 +78,13 @@
             <p>Deliveries to other FCs/AWDs available at an additional cost.</p>
             <p>Anything less than 2 CBM will be charged as 2 CBM.</p>
         </div>
+        
+        <!-- Contact Details -->
+        <div class="contact-details" style="text-align: center; margin-top: 20px;">
+            <h3>Contact Us</h3>
+            <p>Email: support@xhipment.com | Phone: +91-80012-34567</p>
+        </div>
     </div>
     <script src="script.js"></script>
-    <script>
-        document.getElementById('calculate').addEventListener('click', function () {
-            const totalCBM = parseFloat(document.getElementById('totalCBM').textContent);
-            let rate, consideredCBM = totalCBM < 2 ? 2 : totalCBM;
-            
-            if (consideredCBM <= 5) {
-                rate = 189;
-            } else if (consideredCBM <= 10) {
-                rate = 159;
-            } else if (consideredCBM <= 15) {
-                rate = 119;
-            } else if (consideredCBM <= 25) {
-                rate = 109;
-            } else {
-                rate = 89;
-            }
-            
-            const shippingCost = consideredCBM * rate;
-            
-            document.getElementById('breakdownCBM').textContent = consideredCBM.toFixed(2);
-            document.getElementById('breakdownRate').textContent = `$${rate}`;
-            document.getElementById('breakdownTotal').textContent = `$${shippingCost.toFixed(2)}`;
-        });
-    </script>
 </body>
 </html>
