@@ -33,7 +33,7 @@
         }
         /* Input Table - Xhipment Orange Header */
         #inputTable thead {
-            background-color: #ff6f00; /* Xhipment Orange */
+            background-color: #ff6f00;
             color: white;
         }
         #inputTable tbody tr {
@@ -59,6 +59,27 @@
         .justified-text {
             text-align: justify;
         }
+        button {
+            background-color: #ff6f00;
+            color: white;
+            padding: 10px 15px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+        /* Bold Total Row */
+        #breakdownTable tr.total-row {
+            font-weight: bold;
+        }
+        /* Merged Row for Inclusions and Exclusions */
+        #breakdownTable tr.merged-row td {
+            text-align: left;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -79,15 +100,15 @@
             <tbody>
                 <tr>
                     <td>
-                        <select class="unit">
+                        <select class="unit" title="Select unit">
                             <option value="cms">cms</option>
                             <option value="inches">inches</option>
                         </select>
                     </td>
-                    <td><input type="number" class="cartons" min="1" value="1"></td>
-                    <td><input type="number" class="length" step="0.1" required></td>
-                    <td><input type="number" class="width" step="0.1" required></td>
-                    <td><input type="number" class="height" step="0.1" required></td>
+                    <td><input type="number" class="cartons" min="1" value="1" placeholder="Enter units" title="Enter units"></td>
+                    <td><input type="number" class="length" step="0.1" required placeholder="Enter length" title="Enter length"></td>
+                    <td><input type="number" class="width" step="0.1" required placeholder="Enter width" title="Enter width"></td>
+                    <td><input type="number" class="height" step="0.1" required placeholder="Enter height" title="Enter height"></td>
                 </tr>
             </tbody>
         </table>
@@ -129,13 +150,13 @@
                     <td>Pickup Cost</td>
                     <td id="breakdownPickup">-</td>
                     <td>Xhipment</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" placeholder="Enter notes" title="Enter notes"></td>
                 </tr>
                 <tr>
                     <td>Port-to-Port Shipping Cost</td>
                     <td id="breakdownShipping">-</td>
                     <td>Xhipment</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" placeholder="Enter notes" title="Enter notes"></td>
                 </tr>
                 <tr>
                     <td>Import and Export Clearance Cost</td>
@@ -143,43 +164,25 @@
                     <td>Avask</td>
                     <td id="invoiceNote">-</td>
                 </tr>
-                <tr>
+                <tr class="total-row">
                     <td>Total</td>
                     <td id="breakdownTotal">-</td>
                     <td></td>
-                    <td><input type="text"></td>
+                    <td><input type="text" placeholder="Enter notes" title="Enter notes"></td>
                 </tr>
-                <tr>
+                <tr class="merged-row">
                     <td colspan="4">
-                        <strong>Inclusions:</strong> Pick Up Charge, Origin Handling, Export Clearance, Ocean Freight, Import Clearance, Destination Delivery. <br>
-                        <strong>Exclusions:</strong> Bond Procurement, Customs duties, Accessorials to be charged at actuals (if any).
+                        <b>Inclusions:</b> Pick Up Charge, Origin Handling, Export Clearance, Ocean Freight, Import Clearance, Destination Delivery.<br>
+                        <b>Exclusions:</b> Bond Procurement, Customs duties, Accessorials to be charged at actuals (if any).<br><br>
+                        <b>Please Note:</b><br>
+                        1. Deliveries to other FCs/AWDs available too at an additional cost.<br>
+                        2. Anything &lt; 2 CBM will also be charged at 2 CBM.
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <h3>Please Note:</h3>
-        <p class="justified-text">
-            1. Deliveries to other FCs/AWDs available too at an additional cost.<br>
-            2. Anything &lt; 2 CBM will also be charged at 2 CBM.
-        </p>
-
-        <script>
-            function copyBreakdown() {
-                let breakdownTable = document.getElementById("breakdownTable");
-                let range = document.createRange();
-                range.selectNode(breakdownTable);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand("copy");
-                window.getSelection().removeAllRanges();
-                alert("Breakdown table copied!");
-            }
-
-            document.getElementById("invoiceValue").addEventListener("change", function () {
-                document.getElementById("invoiceNote").textContent = this.options[this.selectedIndex].text;
-            });
-        </script>
+        <script src="script.js"></script>
     </div>
 </body>
 </html>
